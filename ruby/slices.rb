@@ -13,3 +13,6 @@ numbers.each_index do |i|
         line = ''
     end
 end
+
+puts 'Printing numbers in slices:'
+numbers.each_slice(4) {|slice| puts (slice.map {|n| n.to_s}).join(' ')}
