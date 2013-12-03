@@ -37,7 +37,7 @@ class CsvRow
   end
 
   def method_missing(name)
-    @row[headers.index(name.to_s)]
+    @row[@headers.index(name.to_s)]
   end
 end
 
@@ -47,4 +47,4 @@ class RubyCsv
 end
 
 m = RubyCsv.new
-m.each {|row| row.one}
+m.each {|row| puts row.one}
