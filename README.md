@@ -7,3 +7,4 @@ This is where I'm storing my code for 7in7 languages.
     + Day 2
     + Day 3
 * Io
+    + Day 1
