@@ -5,9 +5,9 @@ Builder forward := method(
     spaces repeat(" " print)
     spaces = spaces + 2
     write("<", call message name)
-    if(call message argAt(0) type == Map,
-        call message argAt(0) keys foreach(key,
-            write(" ", key, "=", call message argAt(0) at(key))
+    if(doMessage(call message argAt(0)) type == "Map",
+        doMessage(call message argAt(0)) keys foreach(key,
+            write(" ", key, "=", doMessage(call message argAt(0)) at(key))
         )
     )
     writeln(">")
