@@ -1,3 +1,4 @@
+%% A small knowledge base of musicians and their instruments and styles.
 playedInstrument(hendrix, guitar).
 playedInstrument(fergson, trumpet).
 playedInstrument(reinhardt, guitar).

@@ -1,3 +1,4 @@
+%% A basic unification example.
 cat(lion).
 cat(tiger).
 
