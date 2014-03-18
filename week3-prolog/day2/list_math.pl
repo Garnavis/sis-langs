@@ -11,4 +11,6 @@ sum(Total, [Head|Tail]) :-
 
 average(Average, List) :-
     sum(Sum, List),
-    count(Count, List), Average is Sum/Count.
+    count(Count, List), 
+    Average is Sum/Count.
+
