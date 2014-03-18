@@ -11,4 +11,6 @@ flavor(savory, meat).
 flavor(savory, cheese).
 flavor(sweet, soda).
 
-food_flavor(X, Y) :- food_type(X, Z), flavor(Y, Z).
+food_flavor(X, Y) :- % food X has flavor Y if
+    food_type(X, Z), % food X is of type Z and
+    flavor(Y, Z).    % type Z has flavor Y
