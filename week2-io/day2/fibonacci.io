@@ -19,3 +19,4 @@ fib_i := method(end,
         secondNum = tempNum
         count = count + 1)
     firstNum)
+

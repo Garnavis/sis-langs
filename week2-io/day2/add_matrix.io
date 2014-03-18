@@ -9,3 +9,4 @@ sums println
 "Summing sums..." println
 total := sums sum
 total println
+
