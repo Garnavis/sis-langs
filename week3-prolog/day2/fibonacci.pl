@@ -20,6 +20,7 @@ fib_lp_tc(N, F) :-
     fib_lp_tc(N, 0, 1, F).
 
 % From RosettaCode
+% Basically the same as the LiteratePrograms naive code
 fib_rc(1, 1) :- !.
 fib_rc(0, 0) :- !.
 fib_rc(N, Value) :-
