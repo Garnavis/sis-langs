@@ -1,9 +1,14 @@
 %% Find the smallest element in a list.
-smallest(X, L) :- min_acc(X, 9999, L).
+% My own recursive version.
+smallest(H, []).
+smallest(H, [H|[]]).
+smallest(X, [H|T]) :-
+    smallest(M, T),
+    X is min(M, H).
 
-min_acc(X, X, []).
-min_acc(X, Min, []) :- X is min(X, Min).
-min_acc(X, Min, [H|T]) :-
-    Min is min(H, Min),
-    min_acc(X, Min, T).
+% Non-recursive version, based on max_list/2 from RosettaCode.
+my_min_list(Min, List) :-
+    select(Min, List, Sublist),
+    \+((member(X, Sublist),
+       X < Min)).
 
