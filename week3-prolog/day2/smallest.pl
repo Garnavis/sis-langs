@@ -1,6 +1,6 @@
 %% Find the smallest element in a list.
 % My own recursive version.
-smallest(H, []).
+%smallest(H, []).
 smallest(H, [H|[]]).
 smallest(X, [H|T]) :-
     smallest(M, T),
