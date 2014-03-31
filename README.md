@@ -13,4 +13,7 @@ This is where I'm storing my code for 7in7 languages.
 * Prolog
     + Day 1
     + Day 2
+    + Day 3
+* Scala
+    + Day 1
 
