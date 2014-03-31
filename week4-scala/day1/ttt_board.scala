@@ -38,31 +38,46 @@ class Board(s: String) {
     def valid(c: Char) = List('X', 'O', ' ') contains c
 
     /**
-     * Determine the winner of a line.
+     * Determine the result of a line.
      * Returns:
      * - 'X' if the winner is X
      * - 'O' if the winner is O
      * - '_' if there is no winner
      * - '!' if the line is invalid
      */
-    def winner(l: List[Char]): Char {
-        if (l.map(valid).contains(false)) return '!'
-        // TODO
+    def result(l: List[Char]) = {
+        if (l.map(c => valid(c)).contains(false)) '!'
+        if (!l.map(c => c.equals('X')).contains(false)) 'X'
+        if (!l.map(c => c.equals('O')).contains(false)) 'O'
+        '_'
     }
+
+    def winner: Boolean = {
+        val results = all.map(l => result(l))
+        if (results.contains('!')) {
+            println("This board is invalid!")
+            return false
+        }
+
+        results.foreach { r =>
+            if (r == 'X') {
+                println("X wins!")
+                return true
+            } else if (r == 'O') {
+                println("O wins!")
+                return true
+            }
+        }
+
+        println("Nobody wins!")
+        return false
+    }
+
 }
 
-val b = new Board("abc|def|ghi")
-
-println("All rows:")
-b.rows().foreach(row => println(row))
-
-println("All columns:")
-b.cols().foreach(col => println(col))
-
-println("Both diagonals:")
-println(b.maj)
-println(b.min)
-
-println("Everything:")
-println(b.all)
+new Board("XXX|   |   ").winner
+new Board("O  | O |  O").winner
+new Board(" X |OOO|X  ").winner
+new Board("   |   |   ").winner
+new Board("XOO|OXX|OXO").winner
 
