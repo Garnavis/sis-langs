@@ -11,7 +11,7 @@
  */
 class Board(s: String) {
 
-    val board  = s.split("\\|").toList.map(r => r.toCharArray.toList)
+    val board = s.split("\\|").toList.map(r => r.toCharArray.toList)
 
     /* Get the nth row. */
     def row(n: Int) = board(n)
@@ -32,7 +32,7 @@ class Board(s: String) {
     def cols() = col(0) :: col(1) :: col(2) :: Nil
 
     /* Get all possible rows, columns, and diagonals. */
-    def all() = rows ::: cols :: maj :: min :: Nil
+    def all() = rows ::: cols ::: maj :: min :: Nil
 
     /* true if the input is a valid character */
     def valid(c: Char) = List('X', 'O', ' ') contains c
@@ -45,15 +45,15 @@ class Board(s: String) {
      * - '_' if there is no winner
      * - '!' if the line is invalid
      */
-    def result(l: List[Char]) = {
-        if (l.map(c => valid(c)).contains(false)) '!'
-        if (!l.map(c => c.equals('X')).contains(false)) 'X'
-        if (!l.map(c => c.equals('O')).contains(false)) 'O'
-        '_'
+    def result(l: List[Char]): Char = {
+        if (!l.map(c => valid(c)).reduce(_ && _)) return '!'
+        if (l.map(c => c.equals('X')).reduce(_ && _)) return 'X'
+        if (l.map(c => c.equals('O')).reduce(_ && _)) return 'O'
+        return '_'
     }
 
     def winner: Boolean = {
-        val results = all.map(l => result(l))
+        val results = all.map(l => result(l.asInstanceOf[List[Char]]))
         if (results.contains('!')) {
             println("This board is invalid!")
             return false
@@ -80,4 +80,5 @@ new Board("O  | O |  O").winner
 new Board(" X |OOO|X  ").winner
 new Board("   |   |   ").winner
 new Board("XOO|OXX|OXO").winner
+new Board("ABC|DEF|GHI").winner
 
