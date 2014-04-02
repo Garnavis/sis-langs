@@ -1,3 +1,5 @@
+package ttt;
+
 /**
  * A Board is described by a String in three sequences of three characters
  * divided by the pipe character and using spaces for blanks.
@@ -69,16 +71,8 @@ class Board(s: String) {
             }
         }
 
-        println("Nobody wins!")
         return false
     }
 
 }
-
-new Board("XXX|   |   ").winner
-new Board("O  | O |  O").winner
-new Board(" X |OOO|X  ").winner
-new Board("   |   |   ").winner
-new Board("XOO|OXX|OXO").winner
-new Board("ABC|DEF|GHI").winner
 
