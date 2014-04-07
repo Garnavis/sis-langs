@@ -39,6 +39,8 @@ class Board(s: String) {
     /* true if the input is a valid character */
     def valid(c: Char) = List('X', 'O', ' ') contains c
 
+    def get(x: Int, y: Int) = board(x, y)
+
     /**
      * Determine the result of a line.
      * Returns:
