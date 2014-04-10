@@ -3,7 +3,8 @@ import scala.actors._
 import Actor._
 
 object PageLoader {
-    def getPageSize(url: String) = Source.fromURL(url, "iso-8859-1").mkString.length
+    def getPageSize(url: String) = 
+        Source.fromURL(url, "iso-8859-1").mkString.length
 }
 
 val urls = List("http://www.amazon.com/",
