@@ -1,10 +1,13 @@
 import scala.io._
 import scala.actors._
 import Actor._
+import scala.xml.XML
 
 object PageLoader {
     def getPageSize(url: String) = 
         Source.fromURL(url, "iso-8859-1").mkString.length
+
+    def countLinks(url: String) = XML.loadString(Source.fromURL(url, "iso-8859-1").mkString).count(node => node.label == "a")
 }
 
 val urls = List("http://www.amazon.com/",
@@ -22,6 +25,12 @@ def timeMethod(method: () => Unit) = {
 def getPageSizeSequentially() = {
     for (url <- urls) {
         println("Size for " + url + ": " + PageLoader.getPageSize(url))
+    }
+}
+
+def getLinkCountsSequentially() = {
+    for (url <- urls) {
+        println("Size for " + url + ": " + PageLoader.countLinks(url))
     }
 }
 
@@ -45,4 +54,7 @@ timeMethod { getPageSizeSequentially }
 
 println("Concurrent run:")
 timeMethod { getPageSizeConcurrently }
+
+println("Links:")
+getLinkCountsSequentially()
 
