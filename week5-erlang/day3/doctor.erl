@@ -12,6 +12,6 @@ loop() ->
         {'EXIT', From, Reason} ->
             io:format("The shooter ~p died with reason ~p.", [From, Reason]),
             io:format(" Restarting. ~n"),
-            self() ~ new,
+            self() ! new,
             loop()
     end.
